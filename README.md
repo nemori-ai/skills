@@ -35,13 +35,10 @@ Use this skill when you:
 
 ```bash
 # Add this repository as a marketplace
-/plugin marketplace add https://gitlab.com/YOUR_USERNAME/YOUR_REPO
+/plugin marketplace add https://github.com/nemori-ai/skill-customizer.git
 
 # Browse and install
 # Then select "Browse and install plugins" → "skill-customizer" → "Install now"
-
-# Or install directly
-/plugin install skill-customizer@YOUR_MARKETPLACE_NAME
 ```
 
 ### Using the Skill
