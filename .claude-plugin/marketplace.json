@@ -1,0 +1,22 @@
+{
+  "name": "skill-customizer-marketplace",
+  "owner": {
+    "name": "Skill Customizer",
+    "email": "contact@example.com"
+  },
+  "metadata": {
+    "description": "Fork and iteratively customize existing skills based on your preferences and workflows",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "skill-customizer",
+      "description": "Fork and iteratively customize existing skills based on your preferences and workflows. Perfect for personalizing skills to match your output format preferences, company standards, or domain-specific requirements.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skill-customizer"
+      ]
+    }
+  ]
+}
