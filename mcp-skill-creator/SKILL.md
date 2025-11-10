@@ -24,6 +24,22 @@ Use this skill when a user wants to:
 - Build reusable automation scripts for specific work scenarios
 - Capture personal SOPs and preferences into a skill
 
+## ⚠️ IMPORTANT: Before You Start
+
+**ALWAYS check dependencies FIRST before doing anything else:**
+
+```bash
+python3 -c "import mcp; print('✓ MCP SDK is installed')" 2>/dev/null || echo "✗ MCP SDK not installed. Please run: pip3 install mcp --break-system-packages"
+```
+
+**If MCP SDK is not installed:**
+1. Stop immediately - do NOT proceed with introspection or any other steps
+2. Ask the user to install it first: `pip3 install mcp --break-system-packages`
+3. Wait for confirmation before continuing
+4. Verify installation with the check command above
+
+**Why this matters**: The introspector and generated scripts require the `mcp` package. Running introspection without it will fail with confusing errors.
+
 ## Skill Creation Process
 
 Follow these steps to create an MCP-powered skill. This process combines programmatic MCP infrastructure generation with LLM-driven skill design, following skill-creator principles.
@@ -366,6 +382,21 @@ description: <Brief description of workflow + when to use + MCP servers involved
 
 [Overview of what this skill does]
 
+## Prerequisites
+
+This skill requires the MCP SDK to be installed:
+
+```bash
+pip3 install mcp --break-system-packages
+```
+
+**Verify installation**:
+```bash
+python3 -c "import mcp; print('✓ MCP SDK ready!')"
+```
+
+**Why needed**: This skill uses MCP tools to [brief explanation of what MCP servers do]. The workflow scripts require the `mcp` package to connect to MCP servers.
+
 ## Workflow Overview
 
 [User's workflow steps in their own language]
@@ -381,6 +412,8 @@ Standard procedure:
 2. [SOP step 2]
 
 ## Quick Start
+
+**Before running workflows, ensure MCP SDK is installed** (see Prerequisites above).
 
 [Simple example of using the main workflow script]
 

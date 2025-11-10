@@ -118,10 +118,26 @@ Progressive disclosure: Load tool definitions on-demand using list_mcp_tools.py
 
 import asyncio
 import json
+import sys
 from pathlib import Path
 from typing import Any
-from mcp import ClientSession, StdioServerParameters
-from mcp.client.stdio import stdio_client
+
+# Check for MCP SDK and provide helpful error message
+try:
+    from mcp import ClientSession, StdioServerParameters
+    from mcp.client.stdio import stdio_client
+except ImportError:
+    print("\\n" + "="*70)
+    print("❌ ERROR: MCP SDK not installed")
+    print("="*70)
+    print("\\nThis skill requires the MCP SDK to connect to MCP servers.")
+    print("\\n📦 Install it with:")
+    print("\\n    pip3 install mcp --break-system-packages")
+    print("\\n✓ Verify installation:")
+    print("\\n    python3 -c \\"import mcp; print('MCP SDK ready!')\\"")
+    print("\\n💡 See SKILL.md Prerequisites section for more details.")
+    print("\\n" + "="*70 + "\\n")
+    sys.exit(1)
 
 
 def load_mcp_config():
@@ -224,9 +240,25 @@ rather than pre-loading all definitions into context.
 
 import asyncio
 import json
+import sys
 from pathlib import Path
-from mcp import ClientSession, StdioServerParameters
-from mcp.client.stdio import stdio_client
+
+# Check for MCP SDK and provide helpful error message
+try:
+    from mcp import ClientSession, StdioServerParameters
+    from mcp.client.stdio import stdio_client
+except ImportError:
+    print("\\n" + "="*70)
+    print("❌ ERROR: MCP SDK not installed")
+    print("="*70)
+    print("\\nThis skill requires the MCP SDK to list available tools.")
+    print("\\n📦 Install it with:")
+    print("\\n    pip3 install mcp --break-system-packages")
+    print("\\n✓ Verify installation:")
+    print("\\n    python3 -c \\"import mcp; print('MCP SDK ready!')\\"")
+    print("\\n💡 See SKILL.md Prerequisites section for more details.")
+    print("\\n" + "="*70 + "\\n")
+    sys.exit(1)
 
 
 async def list_server_tools(server_name: str, server_command: list):

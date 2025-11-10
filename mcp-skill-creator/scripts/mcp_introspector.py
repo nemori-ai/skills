@@ -20,7 +20,15 @@ try:
     from mcp import ClientSession, StdioServerParameters
     from mcp.client.stdio import stdio_client
 except ImportError:
-    print("Error: MCP SDK not installed. Install with: pip install mcp --break-system-packages")
+    print("\n" + "="*70)
+    print("❌ ERROR: MCP SDK not installed")
+    print("="*70)
+    print("\nThe MCP SDK is required to introspect MCP servers.")
+    print("\n📦 Install it with:")
+    print("\n    pip3 install mcp --break-system-packages")
+    print("\n✓ Verify installation:")
+    print("\n    python3 -c \"import mcp; print('MCP SDK ready!')\"")
+    print("\n" + "="*70 + "\n")
     sys.exit(1)
 
 
