@@ -1,14 +1,23 @@
 {
-  "name": "skill-customizer-marketplace",
+  "name": "meta-skills-marketplace",
   "owner": {
-    "name": "Skill Customizer",
+    "name": "Meta-Skills Collection",
     "email": "onlrrr@gmail.com"
   },
   "metadata": {
-    "description": "Fork and iteratively customize existing skills based on your preferences and workflows",
-    "version": "1.0.0"
+    "description": "Collection of meta-skills for creating and customizing skills",
+    "version": "2.0.0"
   },
   "plugins": [
+    {
+      "name": "mcp-skill-creator",
+      "description": "Create workflow-optimized skills from MCP servers. Transform MCP tools into personalized skills with progressive disclosure, parallel execution, and embedded user preferences. Based on Anthropic's MCP + Code Execution best practices.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./mcp-skill-creator"
+      ]
+    },
     {
       "name": "skill-customizer",
       "description": "Fork and iteratively customize existing skills based on your preferences and workflows. Perfect for personalizing skills to match your output format preferences, company standards, or domain-specific requirements.",
