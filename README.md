@@ -1,142 +1,129 @@
-# Skill Customizer
+# Meta-Skills Collection
 
-A skill for Claude that enables you to fork and iteratively improve existing skills based on your specific preferences and workflows.
+A collection of meta-skills for Claude that enhance skill creation and customization workflows.
 
-This repository is inspired by [Anthropic's official Skills repository](https://github.com/anthropics/skills) and focuses on making skill customization accessible and systematic.
+## What are Meta-Skills?
 
-## What is skill-customizer?
+Meta-skills are skills that help you create or improve other skills. This collection provides powerful tools for:
 
-Instead of creating skills from scratch or making one-time modifications, **skill-customizer** provides a structured workflow for:
+- **Creating new skills** from MCP servers with workflow optimizations
+- **Customizing existing skills** to match your preferences and requirements
+- **Iteratively improving skills** based on real-world usage
 
-- **Forking** existing skills as a starting point
-- **Testing** them on real tasks to identify gaps
-- **Gathering feedback** through structured collection
-- **Customizing** through iterative improvements
-- **Packaging** with timestamped versions for distribution
+## Skills in This Collection
 
-## When to Use skill-customizer
+### 🔧 mcp-skill-creator
 
-Use this skill when you:
-- Find an existing skill useful but want specific modifications
-- Have personal preferences about output format, verbosity, or style
-- Need to adapt a skill to company-specific requirements or workflows
-- Want to add domain-specific knowledge to an existing skill
-- Discover gaps after trying a skill on real tasks
+Transform MCP servers into workflow-optimized skills following [Anthropic's MCP + Code Execution best practices](https://www.anthropic.com/engineering/code-execution-with-mcp).
 
-**Perfect for:**
-- Adjusting output formats (e.g., JSON → Markdown, verbose → concise)
-- Adding company-specific guidelines or templates
-- Incorporating domain-specific knowledge or terminology
-- Matching your personal workflow preferences
+**Use when you want to:**
+- Create a custom skill from one or more MCP servers
+- Optimize workflows with parallel execution and data filtering
+- Build reusable automation scripts for specific work scenarios
+- Capture personal SOPs and preferences into a skill
 
-## Quick Start
+**Key Features:**
+- **Progressive Disclosure**: Load tool definitions on-demand (98.7% token savings)
+- **Working Code Generation**: Generates actual working MCP client infrastructure
+- **Context Efficiency**: Process data in execution environment
+- **Personalization**: Embed user preferences and SOPs into workflow
 
-### Installation via Claude Code Marketplace
+**Example:**
+```
+"I search files with priority: Projects → Downloads → Tmp, stop when found"
+```
+→ Generates a skill with prioritized search workflow and embedded preferences
+
+[See detailed documentation →](mcp-skill-creator/SKILL.md)
+
+---
+
+### ✨ skill-customizer
+
+Fork and iteratively improve existing skills based on your specific preferences and workflows.
+
+**Use when you want to:**
+- Customize an existing skill's output format or behavior
+- Adapt a skill to company-specific requirements
+- Add domain-specific knowledge to an existing skill
+- Fine-tune a skill based on real-world usage
+
+**Key Features:**
+- **Systematic Forking**: Copy and track skill customizations
+- **Structured Feedback**: Capture what works and what doesn't
+- **Guided Customization**: Modify behaviors, scripts, and references
+- **Version Control**: Timestamped packaging for distribution
+
+**Example:**
+```
+"I want the pdf skill to always output tables as CSV instead of JSON"
+```
+→ Forks and customizes the pdf skill with your preferences
+
+[See detailed documentation →](skill-customizer/SKILL.md)
+
+---
+
+## Installation
+
+### Via Claude Code Marketplace
 
 ```bash
 # Add this repository as a marketplace
-/plugin marketplace add https://github.com/nemori-ai/skill-customizer.git
+/plugin marketplace add https://github.com/nemori-ai/skills.git
 
-# Browse and install
-# Then select "Browse and install plugins" → "skill-customizer" → "Install now"
+# Browse and install plugins
+# Then select "Browse and install plugins" → Choose skill → "Install now"
 ```
 
-### Using the Skill
+### Available Plugins
 
-After installation, Claude will proactively suggest using skill-customizer when it detects you're customizing a skill during a session. You can also invoke it directly:
+- **mcp-skill-creator** - Create workflow-optimized skills from MCP servers
+- **skill-customizer** - Customize existing skills based on preferences
 
-```
-"I want to customize the pdf skill to always output tables as CSV instead of JSON"
-```
+## Quick Start Examples
 
-Claude will guide you through:
-1. Forking the base skill
-2. Testing and gathering your feedback
-3. Applying targeted improvements
-4. Iterating until you're satisfied
-5. Packaging the final version with a timestamp
+### Creating a New MCP-Powered Skill
 
-## Features
+```bash
+# 1. Install MCP SDK
+pip3 install mcp --break-system-packages
 
-### 1. Systematic Forking
-- Automatically copies the entire skill structure
-- Updates metadata with customization tracking
-- Creates a `CUSTOMIZATION_LOG.md` for documenting changes
-- Preserves original skill organization
-
-### 2. Structured Feedback Collection
-Interactive feedback tracking helps you:
-- Document what worked well
-- Identify what didn't match expectations
-- Capture specific preferences
-- Prioritize improvements
-
-### 3. Guided Customization
-Modify different aspects of skills:
-- **SKILL.md**: Change behaviors, workflows, output formats
-- **Scripts**: Adjust parameters, add processing steps
-- **References**: Add company guidelines, domain schemas
-- **Assets**: Include templates, brand assets
-
-### 4. Version Control
-- Timestamped packaging: `my-skill-20251021-143022.zip`
-- Track iterations and improvements over time
-- Easy to share and install across Claude environments
-
-## Project Structure
-
-```
-skill-customizer/
-├── SKILL.md                      # Main skill instructions
-├── scripts/
-│   ├── fork_skill.py            # Fork existing skills
-│   ├── track_feedback.py        # Collect structured feedback
-│   ├── finalize_skill.py        # Package with timestamp
-│   └── quick_validate.py        # Validate skill structure
-└── references/
-    └── customization_patterns.md # Detailed patterns and examples
+# 2. Use mcp-skill-creator
+"I want to create a skill that searches my Projects, Downloads, and Tmp
+directories with priority order, stopping when files are found"
 ```
 
-## Examples
+### Customizing an Existing Skill
 
-**Example 1: Output Format Customization**
-```
-User: "I use the pdf skill a lot, but I always want tables as CSV, not JSON"
-
-Claude: "I can help you create a customized version of the pdf skill. Let me fork it
-and customize it to always output tables as CSV..."
-
-[Creates my-pdf-csv skill with modified output format]
+```bash
+# Use skill-customizer
+"I want to customize the data-analysis skill to always include
+confidence intervals and use my company's data visualization standards"
 ```
 
-**Example 2: Company-Specific Adaptation**
-```
-User: "I want the internal-comms skill to follow our company's style guide"
+## Prerequisites
 
-Claude: "Great! I'll customize the internal-comms skill for your company. First,
-can you share your style guide?"
+### For mcp-skill-creator
+- Python 3.10+
+- MCP SDK: `pip3 install mcp --break-system-packages`
+- Node.js (for running MCP servers via npx)
 
-[Adds style guide to references/, updates SKILL.md examples]
-```
-
-**Example 3: Domain Specialization**
-```
-User: "The data-analysis skill is good but needs medical terminology"
-
-Claude: "I'll create a specialized version for medical data analysis..."
-
-[Adds medical terminology reference, updates examples with healthcare use cases]
-```
+### For skill-customizer
+- Python 3.10+
 
 ## Documentation
 
-For detailed information, see:
-- **SKILL.md** - Complete workflow and best practices
-- **references/customization_patterns.md** - Detailed patterns, examples, and troubleshooting
+Each skill has detailed documentation in its directory:
+
+- [mcp-skill-creator/SKILL.md](mcp-skill-creator/SKILL.md) - Complete workflow for creating MCP-powered skills
+- [mcp-skill-creator/references/](mcp-skill-creator/references/) - MCP best practices and examples
+- [skill-customizer/SKILL.md](skill-customizer/SKILL.md) - Complete workflow for customizing skills
+- [skill-customizer/references/](skill-customizer/references/) - Customization patterns and examples
 
 ## About Skills
 
-Skills are folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks. For more information about the skills system:
+Skills are folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks. For more information:
 
 - [What are skills?](https://support.claude.com/en/articles/12512176-what-are-skills)
 - [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude)
@@ -145,12 +132,12 @@ Skills are folders of instructions, scripts, and resources that Claude loads dyn
 
 ## Contributing
 
-This skill was created to make skill customization more accessible. If you have suggestions for improvements or find issues, please feel free to contribute.
+Contributions are welcome! If you have suggestions for improvements or new meta-skills, please feel free to contribute.
 
 ## License
 
-This project is open source under the Apache 2.0 license, following the original Anthropic Skills repository licensing.
+This project is open source under the Apache 2.0 license, following the Anthropic Skills repository licensing.
 
 ## Credits
 
-Inspired by and based on [Anthropic's Skills repository](https://github.com/anthropics/skills), which provides the foundation for understanding and working with Claude's skills system.
+Inspired by [Anthropic's Skills repository](https://github.com/anthropics/skills) and [MCP engineering practices](https://www.anthropic.com/engineering/code-execution-with-mcp).

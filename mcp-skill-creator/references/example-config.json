@@ -1,0 +1,37 @@
+{
+  "_comment": "Example configuration for creating an MCP-powered skill",
+  
+  "mcp_servers": [
+    {
+      "name": "puppeteer",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-puppeteer"]
+    },
+    {
+      "name": "twitter",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-twitter"]
+    },
+    {
+      "name": "reddit",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-reddit"]
+    }
+  ],
+  
+  "workflow_description": "When I research a new internet product:\n\n1. First, I visit the official website and read about their features, pricing, and positioning\n2. Then I search Twitter for recent mentions and community sentiment\n3. I also check Reddit discussions in relevant subreddits like r/SaaS and r/ProductHunt\n4. Finally, I combine all findings into a comprehensive markdown report with:\n   - Executive summary\n   - Key features and differentiators\n   - Pricing analysis\n   - Community sentiment\n   - Pros and cons from users\n   - My recommendations",
+  
+  "preferences": [
+    "I prefer to see quantitative metrics when available (user counts, ratings, conversion rates)",
+    "I value recent information (last 6 months) much more than old reviews",
+    "I like to highlight contradictions between what the company claims and what users actually experience",
+    "For pricing, I want to see how it compares to direct competitors"
+  ],
+  
+  "sop": [
+    "Always start with official sources to establish ground truth",
+    "Cross-reference official claims against community feedback",
+    "Look for red flags like frequent complaints about specific features or missing functionality",
+    "Prioritize reviews from actual users over promotional content or affiliate marketing",
+    "Include direct quotes from notable reviews or discussions",
+    "End report with actionable recommendations based on research"
+  ]
+}
+
